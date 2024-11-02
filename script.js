@@ -106,11 +106,24 @@ function displayItems(page) {
         itemList.appendChild(li);
     });
 }
-
+let currPage = 1
 function setupPagination() {
     pagination.innerHTML = '';
     const pageCount = Math.ceil(items.length / itemsPerPage);
+    if(currentPage-2 > 1){
+        const button = document.createElement('button');
+        button.textContent = 1
+        let dots = document.createElement("p")
 
+        pagination.appendChild(button)
+        dots.innerHTML = `... `
+        pagination.appendChild(dots)
+        button.addEventListener('click', () => {
+            currentPage = 1;
+            displayItems(currentPage);
+            updatePagination();
+        });
+    }
     for (let i = 1; i <= pageCount; i++) {
         const button = document.createElement('button');
         button.textContent = i;
@@ -123,8 +136,24 @@ function setupPagination() {
         if (i === currentPage) {
             button.disabled = true; // Disable the current page button
         }
+        if(i>=currentPage-2 && i<=currentPage+2){
+            pagination.appendChild(button);
+        }
+    }
+   
+    if(currentPage+2 < pageCount){
+        const button = document.createElement('button');
+        button.textContent = pageCount
+        let dots = document.createElement("p")
 
-        pagination.appendChild(button);
+        dots.innerHTML = `... `
+        dots.appendChild(button)
+        pagination.appendChild(dots)
+        button.addEventListener('click', () => {
+            currentPage = 10;
+            displayItems(currentPage);
+            updatePagination();
+        });
     }
 }
 
@@ -133,6 +162,7 @@ function updatePagination() {
     buttons.forEach((button, index) => {
         button.disabled = index + 1 === currentPage;
     });
+    setupPagination()
 }
 
 displayItems(currentPage);
