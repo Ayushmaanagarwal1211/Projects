@@ -110,7 +110,7 @@ let currPage = 1
 function setupPagination() {
     pagination.innerHTML = '';
     const pageCount = Math.ceil(items.length / itemsPerPage);
-    if(currentPage-2 > 1){
+    if(currentPage-1 > 1){
         const button = document.createElement('button');
         button.textContent = 1
         let dots = document.createElement("p")
@@ -136,12 +136,20 @@ function setupPagination() {
         if (i === currentPage) {
             button.disabled = true; // Disable the current page button
         }
-        if(i>=currentPage-2 && i<=currentPage+2){
+        if(i>=currentPage-1 && i<=currentPage+1 || (currentPage==pageCount && i>currentPage-4) || (currentPage==1  && i<currentPage+4) ||(currentPage==2  && i<currentPage+3)  || (currentPage==pageCount-1 && i>=pageCount-3)){
             pagination.appendChild(button);
         }
+        // if(currentPage==pageCount && i>currentPage-4){
+        //     pagination.appendChild(button);
+
+        // }
+        // if(currentPage==1 && i<currentPage+3){
+        //     pagination.appendChild(button);
+
+        // }
     }
    
-    if(currentPage+2 < pageCount){
+    if(currentPage+1 < pageCount){
         const button = document.createElement('button');
         button.textContent = pageCount
         let dots = document.createElement("p")
