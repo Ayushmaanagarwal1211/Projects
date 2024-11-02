@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div style="display: flex;flex-direction: column;justify-content: center;gap: 50px;width: 100vw;align-items: center;">
+
+        <h1 style="text-align: center;">
+            StopWatch
+        </h1>
+        <div class="stopwatch">
+            <div id="display">00:00:00</div>
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </div>
+    <div style="display: flex;flex-direction: column;justify-content: center;gap: 50px;width: 100vw;align-items: center;">
+
+        <h1 style="text-align: center;">Carousel</h1>
+        <div class="carousel" >
+            <div class="carousel-images" style="margin: auto;">
+                <img src="download.jpeg" class="carousel-image active" alt="Image 1">
+                <img src="download (4).jpeg" class="carousel-image" alt="Image 2">
+                <img src="download (1).jpeg" class="carousel-image" alt="Image 3">
+            </div>
+            <div class="dots" style="margin: auto;">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex;flex-direction: column;justify-content: center;gap: 50px;width: 100vw;align-items: center;">
+        <h1 style="text-align: center;">Pagination</h1>
+        <div class="container">
+            <ul id="itemList" class="item-list"></ul>
+            <div style="display: flex;gap: 40px;align-items: center;">
+
+                <button id="prev" style="height: 20px;">Prev</button>
+                <div class="pagination" id="pagination"></div>
+                <button id="next" style="height: 20px;">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
